@@ -1,4 +1,14 @@
-//level order travelsal using Queue
+/*
+Program to breadth first search (that internally work like level order travelsal )using Queue
+
+        A
+       / \
+      B   C
+     /   / \
+    D   E   F
+	
+	output is: A, B, C, D, E, F
+*/
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -31,20 +41,20 @@ PNODE dequeue()
 	return c;
 }
 
-void levelorder(PNODE Root)
+void BFS(PNODE Root)
 {
 	PNODE q = NULL;
 	printf("\n");
-	enqueue(Root);
+	enqueue(Root);         //step1
 
-	while(rear-1 != front)
+	while(rear-1 != front)          //while(1)
 	{
 		//printf("\n rear = %d, front = %d", rear, front);
 		
-		q = dequeue();
-		printf("%d\t", q->data);
+		q = dequeue();               //step2
+		printf("%d\t", q->data);     //step2
 		
-		if(q->lchild)
+		if(q->lchild)                //step3
 		{
 			enqueue(q->lchild);
 		}
@@ -103,23 +113,25 @@ void Insert(PPNODE Root,int iValue)
      
 }
 
+
 int main()
 {
-    PNODE Root = NULL;
+	PNODE Root = NULL;
     Insert(&Root,1);
 	Insert(&Root,2);
 	Insert(&Root,3);
     Insert(&Root,4);
     Insert(&Root,5);
 	
-	printf("Level order traversal of binary tree is \n");
-    levelorder(Root);
+	printf("Breadth First Search (BFS) \n");
+    BFS(Root);
 	return 0;
 }
 
 /*
 output
-Level order travelsal of binary tree is
+Breadth First Search (BFS)
+
 1       2       3       4       5
 
 */
